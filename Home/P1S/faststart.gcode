@@ -1,7 +1,6 @@
 ;===== machine: P1S ========================
 ;===== date: 20240106 =====================
-;===== turn on the HB fan & MC board fan =================
-M104 S75 ;set extruder temp to turn on the HB fan and prevent filament oozing from nozzle
+;===== turn on the MC board fan =================
 M710 A1 S255 ;turn on MC fan by default(P1S)
 ;===== reset machine status =================
 G91
@@ -63,12 +62,6 @@ M621 S[initial_tool]A
 
 M412 S1 ; ===turn on filament runout detection===
 
-M109 S240 ;set nozzle to common flush temp
-M106 P1 S0
-G92 E0
-G1 E50 F200
-M400
-M104 S[nozzle_temperature_initial_layer]
 G92 E0
 G1 E20 F200
 M400
@@ -166,8 +159,6 @@ M975 S1 ; turn on vibration supression
     {endif};Prevent PLA from jamming
 {endif}
 M106 P2 S100 ; turn on big fan ,to cool down toolhead
-
-M104 S{nozzle_temperature_initial_layer[initial_extruder]} ; set extrude temp earlier, to reduce wait time
 
 ;===== noozle load line ===============================
 M975 S1
