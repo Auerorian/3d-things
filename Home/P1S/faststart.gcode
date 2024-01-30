@@ -27,7 +27,7 @@ M140 S[bed_temperature_initial_layer_single] ;set bed temp
 M190 S[bed_temperature_initial_layer_single] ;wait for bed temp
 {endif}
 
-=============turn on fans to prevent PLA jamming=================
+;=============turn on fans to prevent PLA jamming=================
 {if filament_type[initial_tool]=="PLA"}
     {if (bed_temperature[current_extruder] >45)||(bed_temperature_initial_layer[current_extruder] >45)}
     M106 P3 S100
